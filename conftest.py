@@ -1,6 +1,6 @@
 import pytest
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service as ChromeService
 
 
 def pytest_addoption(parser):
@@ -14,15 +14,16 @@ def pytest_addoption(parser):
 def browser(request):
     browser_name = request.config.getoption("browser_name")
     browser_lang = request.config.getoption("language")
-    options = Options()
-    options.add_experimental_option('prefs', {'intl.accept_languages': browser_lang})
+    options = webdriver.ChromeOptions()
+    options.add_argument(f'lang={browser_lang}')
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
-        browser = webdriver.Chrome("chromedriver", options=options)
+        service = ChromeService(executable_path="chromedriver")
+        browser = webdriver.Chrome(service=service, options=options)
     elif browser_name == "yandex":
         print("\nstart yandex browser for test..")
-        browser = webdriver.Chrome('yandexdriver.exe',
-                                   options=options)  # Необходимо доработать этот момент, не передает параметр в браузер
+        service = ChromeService(executable_path="yandexdriver")
+        browser = webdriver.Chrome(service=service, options=options)
     else:
         raise pytest.UsageError("--browser_name should be chrome or yandex")
     yield browser
