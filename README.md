@@ -1,9 +1,11 @@
 # Test automation using Selenium
 ___
 
-1) **Install all requirements**:
+1) **Install virtual env all requirements**:
 
     ```
+   python -m venv venv 
+   venv\Scripts\activate.bat
    pip install -r requirements.txt
     ```
 
