@@ -4,7 +4,7 @@ ___
 1) **Install all requirements**:
 
     ```
-   pip install -r requirements
+   pip install -r requirements.txt
     ```
 
 2) Download Selenium WebDriver from https://chromedriver.chromium.org/downloads (choose version which is compatible with your browser).
