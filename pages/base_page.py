@@ -13,13 +13,13 @@ class BasePage():
 
     def go_to_basket_page(self):
         """Функция находит на странице элемент корзины и используя метод click() окрывает данную страницу"""
-        basket_button = self.browser.find_element(*BasePageLocators.BASKET_BUTTON).click()
+        self.browser.find_element(*BasePageLocators.BASKET_BUTTON).click()
 
     def go_to_login_page(self):
         """Находит на странице элемент кнопки для регистрации(авторизации)
                        и используя метод click() окрывает данную страницу
         """
-        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK).click()
+        self.browser.find_element(*BasePageLocators.LOGIN_LINK).click()
 
     def is_disappeared(self, how, what, timeout=4):
         """Проверяем что элемент исчезнет через определенный таймаут(по умолчанию он 4 сек.)"""
