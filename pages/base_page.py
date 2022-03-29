@@ -30,13 +30,13 @@ class BasePage():
             return False
         return True
 
-    def is_element_present(self, how, what):
-        """ Вспомогательная функиця который находит элемент на страницы
-        и если он отсутсвует то обрабатываем исключение
+    def is_element_present(self, how, what, timeout=2):
+        """ Вспомогательная функиця которая ищет элемент на странице в течении определеного таймаута. Функция была
+        исправлена, так как при загрузке странице элементы могут подгружаться после загрузки страницы
         """
         try:
-            self.browser.find_element(how, what)
-        except NoSuchElementException:
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
             return False
         return True
 
