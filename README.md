@@ -1,10 +1,12 @@
 # Test automation using Selenium
 ___
 
-1) **Install all requirements**:
+1) **Install virtual env all requirements**:
 
     ```
-   pip install -r requirements
+   python -m venv venv 
+   venv\Scripts\activate.bat
+   pip install -r requirements.txt
     ```
 
 2) Download Selenium WebDriver from https://chromedriver.chromium.org/downloads (choose version which is compatible with your browser).
